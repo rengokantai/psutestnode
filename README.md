@@ -46,3 +46,13 @@ using
  npm install --save bluebird
  npm install --save chai-as-promised
 ```
+then
+```
+chai.use(chaiAsPromised);
+```
+
+######Test coverage
+```
+npm install -g istanbul
+istanbul cover node_modules/mocha/bin/_mocha -- -R spec   //memorize
+```

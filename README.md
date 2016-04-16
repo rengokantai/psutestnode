@@ -26,3 +26,18 @@ using
  c.students.should.eql([]);    //equal only compare references. eql is deep comparison
  ```
  
+ ######IO async
+ ```
+ "ENOENT"=err.code
+ 
+ should.exist   //not shold.exists
+ ```
+ ```done()``` 
+ method should put in it block
+ ######Testing with mocks
+ stub syntax:
+ ```
+ var x = sinon.stuv(obj);
+ y = C.create(x);
+ x.t.returns({..
+ ```

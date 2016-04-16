@@ -16,11 +16,21 @@ describe('sinon',function(){
                     cb.dropClass();
                 }
                 else{cb();}
+            },
+            addClass:function(id,cb){
+                if(!sche.isFull()){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         };
         sche ={
             dropClass:function(){
                 console.log('dropped');
+            },
+            isFull:function(){
+                return true; //hard-coded
             }
         }
     });
@@ -58,10 +68,17 @@ describe('sinon',function(){
             stu.dropClass(1,stub.dropClass);
             stub.dropClass.called.should.be.true;
         })
-        xit('should call another stub method',function(){
+        it('should call another stub method',function(){
             var stub = sinon.stub(sche);
             stu.dropClass(1,stub);//same as above
             stub.dropClass.called.should.be.true;
+        })
+
+        it('should call another stub method',function(){
+            var stub =sinon.stub(sche);
+            stub.isFull.returns(false); //force return technique
+            var ret = stu.addClass(sche);
+            ret.should.be.true;
         })
     })
 })

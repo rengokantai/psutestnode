@@ -52,4 +52,16 @@ describe('sinon',function(){
             sche.dropClass.called.should.be.true;
         })
     })
+    describe('with stubs',function(){
+        it('should call a stub method',function(){
+            var stub = sinon.stub(sche);
+            stu.dropClass(1,stub.dropClass);
+            stub.dropClass.called.should.be.true;
+        })
+        xit('should call another stub method',function(){
+            var stub = sinon.stub(sche);
+            stu.dropClass(1,stub);//same as above
+            stub.dropClass.called.should.be.true;
+        })
+    })
 })

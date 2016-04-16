@@ -12,3 +12,10 @@ using
  spy.called.should.be.true;
  ```
  to avoid manual test
+ ######stub
+ wacth entire object.(more common to use stub than spy)
+ ```
+ var stub = sinon.stub(obj)
+ ```
+ sinon goes through every method in that object and replace it with a stub function
+ 

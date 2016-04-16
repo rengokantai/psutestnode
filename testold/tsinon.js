@@ -81,4 +81,12 @@ describe('sinon',function(){
             ret.should.be.true;
         })
     })
+    describe('with mocks',function() {
+        it('should call a mock method', function () {
+            var mockObj = sinon.mock(sche);
+            var exp = mockObj.expects('isFull').once();         //notice the API: expects!!
+            stu.addClass(sche);
+            exp.verify();
+        })
+    })
 })

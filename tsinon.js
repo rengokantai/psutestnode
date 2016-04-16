@@ -19,13 +19,15 @@ describe('sinon',function(){
 
     describe('dropclass',function(){
         it('call callback',function(){
-            var spy = sinon.spy;
-            var called = false;
-            function callback(){
-                called = true;
-            }
-            stu.dropClass(1,callback);
-            expect(called).to.be.true;
+            //var called = false;
+            //function callback(){
+            //    called = true;
+            //}
+            //stu.dropClass(1,callback);
+            //expect(called).to.be.true;
+            var spy = sinon.spy();
+            stu.dropClass(1,spy);
+            spy.called.should.be.true;
         })
     })
 })

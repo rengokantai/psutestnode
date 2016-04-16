@@ -19,3 +19,10 @@ using
  ```
  sinon goes through every method in that object and replace it with a stub function
  
+ #####Unit testing
+ #######Testing error
+ ```
+  c.students=[];
+ c.students.should.eql([]);    //equal only compare references. eql is deep comparison
+ ```
+ 

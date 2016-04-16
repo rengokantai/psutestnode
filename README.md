@@ -41,3 +41,8 @@ using
  y = C.create(x);
  x.t.returns({..
  ```
+ ######Testing promise
+ ```
+ npm install --save bluebird
+ npm install --save chai-as-promised
+```

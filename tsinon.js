@@ -8,13 +8,21 @@ var chai = require('chai'),
     expect = chai.expect;
 chai.should();
 describe('sinon',function(){
-    var stu;
+    var stu,sche;
     beforeEach(function(){
         stu = {
             dropClass:function(id,cb){
-                cb();
+                if(!!cb.dropClass){
+                    cb.dropClass();
+                }
+                else{cb();}
             }
         };
+        sche ={
+            dropClass:function(){
+                console.log('dropped');
+            }
+        }
     });
 
     describe('dropclass',function(){
@@ -28,6 +36,20 @@ describe('sinon',function(){
             var spy = sinon.spy();
             stu.dropClass(1,spy);
             spy.called.should.be.true;
+        })
+
+        it('log in console first',function(){
+            function logInConsole(){
+                console.log('first')
+            }
+            var spy = sinon.spy(logInConsole);
+            stu.dropClass(1,spy);
+            spy.called.should.be.true;
+        })
+        it('call callback with function in obj',function(){
+            sinon.spy(sche,'dropClass');
+            stu.dropClass(1,sche);
+            sche.dropClass.called.should.be.true;
         })
     })
 })

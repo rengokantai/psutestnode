@@ -31,17 +31,20 @@ c.unregisterStu = function(sid){
     };
 };
 
-c.addTimes = function(d,t){
+c.addTimes = function(day,time){
     var me = this;
-    if(!Array.isArray(d)){
-        day=[d]
+    if(!Array.isArray(day)){
+        day=[day]
     }
 
-    if(!Array.isArray(t)){
-        time=[t]
+    if(!Array.isArray(time)){
+        time=[time]
     }
-
+    var validday=["M","T"]
     day.forEach(function(d){
+        if(validday.indexOf(d)===-1){
+            throw new Error(d+ "error day");
+        }
         time.forEach(function(t){
             me.times.push({
                 "day":d,

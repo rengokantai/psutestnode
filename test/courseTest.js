@@ -36,6 +36,36 @@ describe('course',function(){
             c.students[0].id.should.equal(s.id);
         })
     })
+    describe('student unregistration for non exist student',function() {
+        it('throw an error',function(){
+            var c = Course.create(name,cid,desc);
+            expect(function(){
+                c.unregisterStu("nonexist");
+            }).to.throw();
+        })
+    })
+
+    describe('student unregistration for non exist student',function() {
+        it('timedate',function(){
+            var c = Course.create(name,cid,desc);
+            var days =["M","T"],
+                times=["10:00"];
+           c.addTimes(days,times);
+            c.times.length.should.equal(2);
+            c.times[1].should.eql({day:"T",time:"10:00"})  //If ArrayOutOuBoundException, show TypeError: Cannot read property 'should' of undefined
+
+        })
+
+        it('wrong timedate',function() {
+            var c = Course.create(name,cid,desc);
+            var day ="wrong",time="1:00";
+            expect(function(){
+                c.addTimes(day,time);
+            }).to.throw();
+        })
+
+    })
+
 
 })
 
